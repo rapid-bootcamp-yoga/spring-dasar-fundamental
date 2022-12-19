@@ -4,14 +4,21 @@ import com.rapidtech.demospringboot.model.Bar;
 import com.rapidtech.demospringboot.model.Foo;
 import com.rapidtech.demospringboot.model.FooBar;
 import jdk.nashorn.api.tree.ForOfLoopTree;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class DepedencyInjection {
 
-    @Bean
-    public Foo foo(){
+    @Primary
+    @Bean(value = "fooFirst")
+    public Foo foo1(){
+        return new Foo();
+    }
+    @Bean(value = "fooSecond")
+    public Foo foo2(){
         return new Foo();
     }
 
@@ -21,7 +28,7 @@ public class DepedencyInjection {
     }
 
     @Bean
-    public FooBar foobar(Foo foo, Bar bar) {
+    public FooBar foobar(@Qualifier("fooSecond") Foo foo, Bar bar) {
         return new FooBar(foo, bar);
     }
 }
