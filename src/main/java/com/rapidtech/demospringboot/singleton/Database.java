@@ -1,4 +1,4 @@
-package singleton;
+package com.rapidtech.demospringboot.singleton;
 
 public class Database {
     private static Database database;

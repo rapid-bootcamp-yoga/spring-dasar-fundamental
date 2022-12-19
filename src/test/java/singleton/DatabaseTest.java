@@ -1,9 +1,8 @@
 package singleton;
 
+import com.rapidtech.demospringboot.singleton.Database;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
     @Test
